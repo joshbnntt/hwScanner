@@ -1,19 +1,21 @@
 {% extends 'master' %}
 
 {% block content %}
-  <div class="">
+  {#<div class="">
     {{ form.open({action: 'ScannerController.store'}) }}
     {{ csrfField }}
     <label for="scannedBarcodes">Scanned Barcodes</label>
     <textarea name="scannedBarcodes" id="scannedBarcodes" cols="30" rows="10"></textarea>
     <button type="submit">Save</button>
     {{ form.close()}}
-  </div>
+  </div>#}
 
   <div id="app"></div>
 {% endblock %}
 
 {% block scripts %}
-<scripts src="js/dist/client.09d578de.js"></scripts>
-<scripts src="js/dist/client.09d578de.js.map"></scripts>
+<script type="text/javascript" src="/js/dist/client.83d3be37.js"></script>
+<script type="text/javascript" src="/js/dist/client.83d3be37.js.map"></script>
+{#<scripts src="js/dist/client.2afedda0.js"></scripts>
+<scripts src="js/dist/client.2afedda0.js.map"></scripts>#}
 {% endblock %}

@@ -18,4 +18,4 @@
 const Route = use('Route')
 
 Route.get('/', 'ScannerController.index')
-Route.post('/', 'ScannerController.store')
+Route.post('/store', 'ScannerController.store')

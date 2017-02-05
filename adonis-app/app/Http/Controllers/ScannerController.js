@@ -12,7 +12,7 @@ class ScannerController {
 
     store (request, response) {
         let data = request.only('scannedBarcodes')
-        let barcodesArray = data.scannedBarcodes.split('\r\n')
+        let barcodesArray = data.scannedBarcodes.split('\n')
         let parsedBarcodes = []
         for(let barcodeIndex in barcodesArray) {
             let set = barcodesArray[barcodeIndex].split(' ')

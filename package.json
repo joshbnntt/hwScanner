@@ -1,10 +1,11 @@
 {
-  "name": "electron-quick-start",
+  "name": "hw-scanner",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A Barcode scanner data entry app for H&W",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "electron": "electron .",
+    "start": ".\\node.exe start-electron.js"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -14,9 +15,22 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "JoshBnntt <joshuabnntt@gmail.com>",
+  "license": "",
+  "dependencies":{
+    "electron": "^1.4.1",
+    "jquery": "^3.1.1",
+    "keymaster": "^1.6.2",
+    "lodash": "^4.17.3",
+    "request": "^2.75.0",
+    "strip": "^3.0.0"    
+  },
   "devDependencies": {
-    "electron": "^1.4.1"
+    "electron": "^1.4.1",
+    "jquery": "^3.1.1",
+    "keymaster": "^1.6.2",
+    "lodash": "^4.17.3",
+    "request": "^2.75.0",
+    "strip": "^3.0.0"
   }
 }

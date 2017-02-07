@@ -11,19 +11,10 @@ class ScannerController {
     }
 
     store (request, response) {
-        let data = request.only('scannedBarcodes')
-        let barcodesArray = data.scannedBarcodes.split('\n')
-        let parsedBarcodes = []
-        for(let barcodeIndex in barcodesArray) {
-            let set = barcodesArray[barcodeIndex].split(' ')
-            let obj = {} 
-            for(let setIndex in set) {
-               let prefix = set[setIndex].split(/[\d]{1}/)[0]
-               obj[prefix] = set[setIndex].substring(prefix.length, set[setIndex].length)
-            }
-            parsedBarcodes.push(obj) //= Object.assign({}, parsedBarcodes, obj)
-        }
-        response.json(parsedBarcodes)
+        let data = request.only('parsedBarcodes')
+        console.log('data', ...data.parsedBarcodes)
+        let returnData = [...data.parsedBarcodes]
+        response.json(returnData)
     }
 }
 

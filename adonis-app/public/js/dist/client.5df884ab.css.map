@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///webpack:///components/ScanInput.vue"],"names":[],"mappings":"AACA,iBACI,UAAW","file":"client.5df884ab.css","sourcesContent":["\n#scannedBarcodes {\n    width:100%;\n}\n\n\n\n// WEBPACK FOOTER //\n// webpack:///components/ScanInput.vue"],"sourceRoot":""}

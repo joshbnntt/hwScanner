@@ -1,21 +1,16 @@
 {% extends 'master' %}
+{% block styles%} 
+  <link rel="stylesheet" href="/js/dist/client.5df884ab.css">
+  <link rel="stylesheet" href="/js/dist/client.5df884ab.css.map">
+{% endblock %}
 
 {% block content %}
-  {#<div class="">
-    {{ form.open({action: 'ScannerController.store'}) }}
-    {{ csrfField }}
-    <label for="scannedBarcodes">Scanned Barcodes</label>
-    <textarea name="scannedBarcodes" id="scannedBarcodes" cols="30" rows="10"></textarea>
-    <button type="submit">Save</button>
-    {{ form.close()}}
-  </div>#}
-
   <div id="app"></div>
 {% endblock %}
 
 {% block scripts %}
-<script type="text/javascript" src="/js/dist/client.83d3be37.js"></script>
-<script type="text/javascript" src="/js/dist/client.83d3be37.js.map"></script>
+<script type="text/javascript" src="/js/dist/client.9810fbde.js"></script>
+<script type="text/javascript" src="/js/dist/client.9810fbde.js.map"></script>
 {#<scripts src="js/dist/client.2afedda0.js"></scripts>
 <scripts src="js/dist/client.2afedda0.js.map"></scripts>#}
 {% endblock %}

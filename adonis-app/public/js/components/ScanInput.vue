@@ -6,33 +6,34 @@
             v-model="barcodes"
             name="scannedBarcodes" 
             id="scannedBarcodes"
-            cols="30" 
-            rows="10"
+            row="30"
             autofocus
-            @keyup.enter="storeBarcodes"></textarea>
-        <button @click="storeBarcodes">Save</button>
+            @keyup.enter="parseBarcodes"></textarea>
     </div>
-    <div class="response" v-if="response !== {}">
-        <h3>Response</h3>
+    <div class="numbers" >
+        <h3></h3>
         <table>
             <tr>
                 <th>HW</th>
                 <th>Lot</th>
                 <th>Other</th>
             </tr>
-            <tr v-for="item in response">
+            <tr v-for="item in parsedBarcodes">
                 <td>{{item.hw}}</td>
                 <td>{{item.lt}}</td>
                 <td>{{item.rf}}</td>
             </tr>
 
-        </table>
+        </table>  
+        <button @click="storeBarcodes">Save</button>
     </div>
-    <div class="error" v-else-if="error !== {}">
+    <div class="response">
+        {{response}}
+    </div>
+    <div class="error" v-if="error !== {}">
         <h3>Error</h3>
         {{error}}
     </div>
-    <div v-else></div>
 </div>
 
 </template>
@@ -44,16 +45,15 @@
         data() {
             return {
                 barcodes:'',
+                parsedBarcodes: [],
                 response: [],
                 error: {}
             }
         },
         methods: {
-            storeBarcodes() {
+            parseBarcodes() {
                 const barcodes = this.barcodes.trim()
                 this.barcodes = ''
-                this.error = {}
-                document.getElementById('scannedBarcodes').focus()
                 let barcodesArray = barcodes.split('\n')
                 let parsedBarcodes = []
                 for(let barcodeIndex in barcodesArray) {
@@ -63,22 +63,34 @@
                         let prefix = set[setIndex].split(/[\d]{1}/)[0]
                         obj[prefix] = set[setIndex].substring(prefix.length, set[setIndex].length)
                     }
-                    parsedBarcodes.push(obj) //= Object.assign({}, parsedBarcodes, obj)
+                    parsedBarcodes.push(obj)
                 }
-                this.response = [...this.response, ...parsedBarcodes]
-                // axios.post('/store', {
-                //     scannedBarcodes:barcodes
-                // })
-                // .then((response) => {
-                //     console.log('response', response)
-                //     this.response.push(response.data[0])
-                // })
-                // .catch((error) => {
-                //     console.error('error', error)
-                //     this.error = error
-                // })
+                this.parsedBarcodes = [...this.parsedBarcodes, ...parsedBarcodes]
+                
+            },
+            storeBarcodes() {
+                let barcodes = this.parsedBarcodes
+                this.error = {}
+                document.getElementById('scannedBarcodes').focus()
+                axios.post('/store', {
+                    parsedBarcodes:barcodes
+                })
+                .then((response) => {
+                    console.log('response', response)
+                    this.response = response.data
+                })
+                .catch((error) => {
+                    console.error('error', error)
+                    this.error = error
+                })
             }
         }
 
     }
 </script>
+
+<style>
+    #scannedBarcodes {
+        width:100%;
+    }
+</style>

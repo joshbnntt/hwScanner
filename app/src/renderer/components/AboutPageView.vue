@@ -1,6 +1,10 @@
 <template>
   <div>
     <h1>About</h1>
+    <p>
+      This app is an interface that makes entering numbers via barcode scanner.
+
+    </p>
   </div>
 </template>
 

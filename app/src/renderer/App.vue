@@ -77,4 +77,16 @@
       background-color:var(--color-secondary-2-1);
       color:var(--color-primary-4);
   }
+
+  button {
+      height:42px;
+      width: 150px;
+      background-color : transparent;
+      border-color:var(--color-primary-0);
+  }
+  button:hover {
+      background-color : var(--color-primary-0);
+      border-color:transparent;
+      color:white;
+  }
 </style>

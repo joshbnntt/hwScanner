@@ -10,22 +10,23 @@
         autofocus
         @keyup.enter="parseBarcodes"></textarea>
     </div>
+    
     <div class="numbers" >
       <h3></h3>
-      <table>
+      <table class="numbers-table">
         <tr>
           <th>HW</th>
           <th>Lot</th>
           <th>Other</th>
         </tr>
-        <tr v-for="item in parsedBarcodes">
+        <tr v-for="item in items">
           <td>{{item.hw}}</td>
           <td>{{item.lt}}</td>
           <td>{{item.rf}}</td>
         </tr>
       </table>  
-      <button @click="storeBarcodes">Save</button>
     </div>
+    <button @click="storeBarcodes">Save</button>
     <div class="response">
       {{response}}
     </div>
@@ -49,6 +50,17 @@
         error: {}
       }
     },
+    props: [
+      'items'
+    ],
+    computed: {
+      parts () {
+        return this.items
+      }
+    },
+    mounted () {
+      document.getElementById('scannedBarcodes').focus()
+    },
     methods: {
       parseBarcodes () {
         const barcodes = this.barcodes.trim()
@@ -63,8 +75,10 @@
             obj[prefix] = set[setIndex].substring(prefix.length, set[setIndex].length)
           }
           parsedBarcodes.push(obj)
+          this.$emit('addItem', obj)
         }
         this.parsedBarcodes = [...this.parsedBarcodes, ...parsedBarcodes]
+        console.log('items', this.items)
       },
       storeBarcodes () {
         // let barcodes = this.parsedBarcodes
@@ -88,7 +102,14 @@
 </script>
 
 <style>
-#scannedBarcodes {
-width:100%;
-}
+  #scannedBarcodes {
+    width:100%;
+  }
+  .numbers {
+    width:100%;
+    height:300px;
+  }
+  .numbers-table {
+    width:80%;
+  }
 </style>

@@ -2,7 +2,7 @@
   <div>
     <h1>About</h1>
     <p>
-      This app is an interface that makes entering numbers via barcode scanner.
+      This app is an interface that makes entering numbers via barcode scanner easier.
 
     </p>
   </div>

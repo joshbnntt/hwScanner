@@ -1,15 +1,15 @@
 import * as types from '../mutation-types'
 
 const state = {
-  items: []
+  numbers: []
 }
 
 const mutations = {
   [types.ADD_ITEM_NUMBERS] (state, item) {
-    state.items.push(item)
+    state.numbers.push(item)
   },
   [types.EMPTY_ITEM_NUMBERS] (state) {
-    state.items.length = 0
+    state.numbers.length = 0
   }
 }
 

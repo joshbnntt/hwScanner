@@ -5,7 +5,9 @@
         <router-link to="/about" tag="li">about</router-link>
         <router-link to="/scan" tag="li">scan</router-link>
     </nav>
-    <router-view></router-view>
+    <div class="content">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -76,6 +78,10 @@
   .router-link-active:hover {
       background-color:var(--color-secondary-2-1);
       color:var(--color-primary-4);
+  }
+
+  .content {
+    padding-top:45px;
   }
 
   button {
